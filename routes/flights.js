@@ -11,4 +11,7 @@ router.get('/new', flightsCtrl.new);
 //Posts new movie
 router.post('/', flightsCtrl.create);
 
+//Show Route
+router.get('/:id', flightsCtrl.show);
+
 module.exports = router;
