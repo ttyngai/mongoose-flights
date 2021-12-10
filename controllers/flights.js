@@ -17,10 +17,15 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
+  if (!req.body.departs) {
+    req.body.departs = new Date(
+      new Date().getFullYear() + 1,
+      new Date().getMonth(),
+      new Date().getDate()
+    );
+  }
   let flight = new Flight(req.body);
-  console.log(flight);
   flight.save(function (err) {
-    console.log(err);
     if (err) return res.redirect('./flights/new');
     res.redirect('./flights');
   });
