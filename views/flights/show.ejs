@@ -17,6 +17,28 @@
 <br />
 
 <section>
+  <h2>Add Ticket</h2>
+  <a href="/flights/<%= flight._id%>/new">New Ticket</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach(function(t) { %>
+      <tr>
+        <td><%= t.seat %></td>
+        <td>$<%= t.price %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</section>
+
+<section>
   <h2>Add Destinations</h2>
   <form action="/flights/<%= flight._id%>/destinations" method="POST">
     <label>Airport</label>
