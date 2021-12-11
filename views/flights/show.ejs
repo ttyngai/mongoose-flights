@@ -19,6 +19,7 @@
 <section>
   <h2>Add Ticket</h2>
   <a href="/flights/<%= flight._id%>/new">New Ticket</a>
+  <% if (ticketArray.length) {%>
 
   <table>
     <thead>
@@ -36,8 +37,11 @@
       <% }); %>
     </tbody>
   </table>
+  <%} else {%>
+  <h5>No Tickets Yet</h5>
+  <%}%>
 </section>
-
+<br />
 <section>
   <h2>Add Destinations</h2>
   <form action="/flights/<%= flight._id%>/destinations" method="POST">

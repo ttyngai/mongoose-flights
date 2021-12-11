@@ -37,7 +37,19 @@ function create(req, res) {
 function show(req, res) {
   Flight.findById(req.params.id, function (err, flight) {
     Ticket.find({ flight: flight._id }, function (err, tickets) {
-      res.render('flights/show', { title: 'Flight Details', flight, tickets });
+      let ticketArray = [];
+      tickets.forEach(function (ticket) {
+        if (ticket.flight) {
+          ticketArray.push(ticket);
+        }
+      });
+      console.log('ticketArray', ticketArray.length);
+      res.render('flights/show', {
+        title: 'Flight Details',
+        flight,
+        tickets,
+        ticketArray,
+      });
     });
   });
 }
